@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Simple Chat with Granite Model</title>
+</head>
+<body>
+    <h1>Chat with Granite Model</h1>
+    <textarea id="question" rows="4" cols="50" placeholder="Ask your question here..."></textarea><br/>
+    <button onclick="sendQuestion()">Ask</button>
+
+    <h3>Answer:</h3>
+    <pre id="answer"></pre>
+
+    <script>
+        async function sendQuestion() {
+            const question = document.getElementById("question").value;
+            if (!question.trim()) {
+                alert("Please enter a question.");
+                return;
+            }
+            document.getElementById("answer").textContent = "Thinking...";
+
+            const response = await fetch("/ask", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ question })
+            });
+            const data = await response.json();
+            document.getElementById("answer").textContent = data.answer;
+        }
+    </script>
+</body>
+</html>
