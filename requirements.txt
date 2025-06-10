@@ -1,8 +1,9 @@
 flask
 requests
 langchain
-sentence-transformers
-unstructured
-elasticsearch
 langchain-community
+sentence-transformers
+elasticsearch
+unstructured
+
 
