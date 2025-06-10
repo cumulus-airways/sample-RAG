@@ -3,6 +3,7 @@ FROM python:3.10-slim
 # Install git to clone repo during build
 RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 RUN pip install unstructured
+RUN pip install unstructured langchain langchain-community flask requests elasticsearch sentence-transformers
 
 WORKDIR /app
 
