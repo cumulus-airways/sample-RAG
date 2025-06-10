@@ -69,20 +69,6 @@ Answer:"""
 
     return query_granite(prompt)
 
-@app.route("/chat", methods=["POST"])
-def chat():
-    data = request.json
-    question = data.get("question")
-    if not question:
-        return jsonify({"response": "Please provide a question."}), 400
-
-    try:
-        answer = answer_query(question)
-    except Exception as e:
-        return jsonify({"response": f"Error: {str(e)}"}), 500
-
-    return jsonify({"response": answer})
-
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000)
 
