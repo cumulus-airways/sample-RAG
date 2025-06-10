@@ -7,13 +7,19 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-@app.route("/ask", methods=["POST"])
-def ask():
+@app.route("/chat", methods=["POST"])
+def chat():
     data = request.json
     question = data.get("question")
     if not question:
-        return jsonify({"answer": "Please provide a question."})
+        return jsonify({"response": "Please provide a question."}), 400
 
+    try:
+        answer = answer_query(question)
+    except Exception as e:
+        return jsonify({"response": f"Error: {str(e)}"}), 500
+
+    return jsonify({"response": answer})
     # ✅ Call your RAG backend API
     try:
         rag_response = requests.post(
