@@ -15,7 +15,7 @@ app = Flask(__name__)
 def clone_repo(repo_url, target_dir="repo"):
     if not os.path.exists(target_dir):
         subprocess.run(["git", "clone", repo_url, target_dir], check=True)
-    return os.path.join(target_dir, "document.pdf")  # adjust if needed
+    return os.path.join(target_dir, "document .docx")  # adjust if needed
 
 repo_url = "https://github.com/Keerthana1695/sample-RAG.git"
 doc_path = clone_repo(repo_url)
