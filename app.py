@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from elasticsearch import Elasticsearch
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_community.document_loaders import UnstructuredFileLoader
+from langchain_unstructured import UnstructuredLoader
 from langchain_community.vectorstores import ElasticsearchStore
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import subprocess
@@ -20,7 +20,7 @@ def clone_repo(repo_url, target_dir="repo"):
 repo_url = "https://github.com/Keerthana1695/sample-RAG.git"
 doc_path = clone_repo(repo_url)
 
-loader = UnstructuredFileLoader(doc_path)
+loader = UnstructuredLoader(doc_path)
 docs = loader.load()
 
 text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
