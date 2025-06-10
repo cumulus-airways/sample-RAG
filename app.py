@@ -34,6 +34,29 @@ def ask():
     if not question:
         return jsonify({"answer": "Please provide a question."})
 
+@app.route("/ask", methods=["POST"])
+def ask():
+    data = request.json
+    question = data.get("question")
+    if not question:
+        return jsonify({"answer": "Please provide a question."})
+
+    # ✅ Call your RAG backend API
+    try:
+        rag_response = requests.post(
+            "http://localhost:8000/chat",  # Your FastAPI RAG endpoint
+            json={"question": question},
+            headers={"Content-Type": "application/json"}
+        )
+        if rag_response.status_code == 200:
+            answer = rag_response.json().get("response", "No answer returned.")
+        else:
+            answer = f"Error from RAG API: {rag_response.status_code}"
+    except Exception as e:
+        answer = f"Request failed: {e}"
+
+    return jsonify({"answer": answer.strip()})
+
     # For demo, just send question as prompt
     prompt = f"Answer the question:\n{question}\nAnswer:"
     answer = query_granite(prompt)
