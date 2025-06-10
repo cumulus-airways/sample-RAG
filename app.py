@@ -28,7 +28,7 @@ def ask():
     except Exception as e:
         answer = f"Request failed: {e}"
         
-   return jsonify({"answer": answer.strip()})
+    return jsonify({"answer": answer.strip()})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
