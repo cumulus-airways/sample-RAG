@@ -34,13 +34,6 @@ def ask():
     if not question:
         return jsonify({"answer": "Please provide a question."})
 
-@app.route("/ask", methods=["POST"])
-def ask():
-    data = request.json
-    question = data.get("question")
-    if not question:
-        return jsonify({"answer": "Please provide a question."})
-
     # ✅ Call your RAG backend API
     try:
         rag_response = requests.post(
