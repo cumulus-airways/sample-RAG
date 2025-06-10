@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, jsonify
 from elasticsearch import Elasticsearch
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import ElasticsearchStore
-from langchain.document_loaders import UnstructuredFileLoader
+from langchain_community.document_loaders import UnstructuredFileLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import subprocess
 import requests
