@@ -2,6 +2,28 @@ from elasticsearch import Elasticsearch
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import ElasticsearchStore
 import requests
+import os
+import subprocess
+from langchain.document_loaders import UnstructuredFileLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+def clone_repo(repo_url, target_dir="repo"):
+    if not os.path.exists(target_dir):
+        subprocess.run(["git", "clone", repo_url, target_dir], check=True)
+    return os.path.join(target_dir, "document.pdf")  # adjust if subfolder exists
+    
+repo_url = "https://github.com/Keerthana1695/sample-RAG.git"
+doc_path = clone_repo(repo_url)
+
+loader = UnstructuredFileLoader(doc_path)
+docs = loader.load()
+
+text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
+    chunk_size=128,
+    chunk_overlap=64
+)
+split_docs = text_splitter.split_documents(docs)
+
 
 ES_HOST = "https://elasticsearch-sample-rag-sample.apps.cluster-7lkbd.7lkbd.sandbox580.opentlc.com"
 ES_AUTH = ("elastic", "2DgOfW1G9w5h8yE41Pa72Q1c")
