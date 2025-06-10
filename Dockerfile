@@ -1,22 +1,21 @@
 FROM python:3.10-slim
 
-# Install git and any system dependencies
+# Install git to clone repo during build
 RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
-# Set workdir
 WORKDIR /app
 
-# Copy requirements (if any)
-COPY requirements.txt .
+# Clone repo during build
+RUN git clone https://github.com/Keerthana1695/sample-RAG.git repo
 
-# Install python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy your app code into image
+COPY app.py .
 
-# Copy your app code
-COPY . .
+# Install dependencies
+RUN pip install --upgrade pip
+RUN pip install flask requests langchain langchain-community elasticsearch sentence-transformers
 
-# Expose port
-EXPOSE 8080
+# Set environment variable if needed
+ENV PYTHONUNBUFFERED=1
 
-# Run the flask app
 CMD ["python", "app.py"]
