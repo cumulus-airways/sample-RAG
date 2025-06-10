@@ -17,7 +17,7 @@ def ask():
     # ✅ Call your RAG backend API
     try:
         rag_response = requests.post(
-            "https://sample-rag-rag-sample.apps.cluster-7lkbd.7lkbd.sandbox580.opentlc.com/chat",  # Your FastAPI RAG endpoint
+            "http://localhost:8000/chat",  # Your FastAPI RAG endpoint
             json={"question": question},
             headers={"Content-Type": "application/json"}
         )
