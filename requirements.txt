@@ -5,5 +5,3 @@ langchain-community
 sentence-transformers
 elasticsearch
 unstructured
-
-
