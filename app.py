@@ -27,6 +27,8 @@ def ask():
             answer = f"Error from RAG API: {rag_response.status_code}"
     except Exception as e:
         answer = f"Request failed: {e}"
+        
+   return jsonify({"answer": answer.strip()})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
