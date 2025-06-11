@@ -76,8 +76,8 @@ def chat():
         return jsonify({"response": "Please provide a question."}), 400
     try:
         answer = answer_query(question)
-        return jsonify({"response": answer.strip()})
+        return jsonify({"answer": answer.strip()})
     except Exception as e:
-        return jsonify({"response": f"Error: {str(e)}"}), 500
+        return jsonify({"answer": f"Error: {str(e)}"}), 500
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
