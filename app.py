@@ -80,5 +80,17 @@ def chat():
     except Exception as e:
         return jsonify({"answer": f"Error: {str(e)}"}), 500
 
+@app.route("/llm", methods=["POST"])
+def llm():
+    data = request.json
+    question = data.get("question")
+    if not question:
+        return jsonify({"response": "Please provide a question."}), 400
+    try:
+        answer = query_granite(question)
+        return jsonify({"answer": answer.strip()})
+    except Exception as e:
+        return jsonify({"answer": f"Error: {str(e)}"}), 500
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
