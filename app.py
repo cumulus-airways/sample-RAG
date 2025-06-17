@@ -4,6 +4,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_unstructured import UnstructuredLoader
 from langchain_community.vectorstores import ElasticsearchStore
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import TextLoader
 import subprocess
 import requests
 import os
@@ -18,7 +19,7 @@ app = Flask(__name__)
 file_paths = [
     "./document.txt",
 ]
-loader = UnstructuredLoader(file_paths, strategy="fast")
+loader = TextLoader(file_paths, strategy="fast")
 docs = loader.load()
 text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
     chunk_size=128,
