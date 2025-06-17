@@ -16,8 +16,8 @@ app = Flask(__name__)
 #     return os.path.join(target_dir, "document .docx")  # adjust if needed
 # repo_url = "https://github.com/Keerthana1695/sample-RAG.git"
 # doc_path = clone_repo(repo_url)
-file_paths = ["./document.txt"]
-loader = TextLoader(file_paths)
+file_path = ["./document.txt"]
+loader = TextLoader(file_path)
 docs = loader.load()
 text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
     chunk_size=128,
