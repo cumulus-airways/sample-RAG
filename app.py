@@ -19,7 +19,7 @@ app = Flask(__name__)
 file_paths = [
     "./document.txt",
 ]
-loader = TextLoader(file_paths, strategy="fast")
+loader = TextLoader(file_paths)
 docs = loader.load()
 text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
     chunk_size=128,
