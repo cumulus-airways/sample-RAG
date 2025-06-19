@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from elasticsearch import Elasticsearch
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain.embeddings import HuggingFaceEmbeddings
 from langchain_unstructured import UnstructuredLoader
 from langchain_community.vectorstores import ElasticsearchStore
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -31,7 +31,7 @@ INFERENCE_SERVER_URL = "https://granite-31-2b-instruct-sample-rag.apps.cluster-j
 MODEL_NAME = "granite-31-2b-instruct"
 client = Elasticsearch([ES_HOST], basic_auth=ES_AUTH, verify_certs=False)
 client.info()
-embeddings = HuggingFaceEmbeddings(model_name='sentence-transformers/all-mpnet-base-v2')
+embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 vector_store = ElasticsearchStore(es_connection=client, index_name="rh_index", embedding=embeddings)
 def query_granite(prompt: str) -> str:
     payload = {
