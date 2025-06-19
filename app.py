@@ -8,6 +8,10 @@ from langchain_community.document_loaders import TextLoader
 import subprocess
 import requests
 import os
+
+os.environ["TRANSFORMERS_CACHE"] = "/tmp/hf_cache"
+os.environ["HF_HOME"] = "/tmp/hf_cache"
+
 app = Flask(__name__)
 ### --- RAG Pipeline Setup ---
 # def clone_repo(repo_url, target_dir="repo"):
