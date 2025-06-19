@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from elasticsearch import Elasticsearch
-from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_unstructured import UnstructuredLoader
 from langchain_community.vectorstores import ElasticsearchStore
 from langchain.text_splitter import RecursiveCharacterTextSplitter
