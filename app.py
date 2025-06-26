@@ -37,6 +37,14 @@ client = Elasticsearch([ES_HOST], basic_auth=ES_AUTH, verify_certs=False)
 client.info()
 embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-MiniLM-L6-v2")
 vector_store = ElasticsearchStore(es_connection=client, index_name="rh_index", embedding=embeddings)
+
+# Check if index exists and create if not
+if not client.indices.exists(index="rh_index"):
+    print("Creating index and adding documents...")
+    vector_store.add_documents(split_docs)
+else:
+    print("Index already exists.")
+
 def query_granite(prompt: str) -> str:
     payload = {
         "model": MODEL_NAME,
