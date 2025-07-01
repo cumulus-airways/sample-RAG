@@ -9,8 +9,9 @@ import subprocess
 import requests
 import os
 
-os.environ["TRANSFORMERS_CACHE"] = "/tmp/hf_cache"
-os.environ["HF_HOME"] = "/tmp/hf_cache"
+os.makedirs("/app/cache", exist_ok=True)
+os.environ["TRANSFORMERS_CACHE"] = "/app/cache"
+os.environ["HF_HOME"] = "/app/cache"
 
 app = Flask(__name__)
 ### --- RAG Pipeline Setup ---
