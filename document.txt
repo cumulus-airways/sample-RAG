@@ -1,1 +1,595 @@
-﻿1.What is OpenShift Dedicated?OpenShift Dedicated is a cloud service that provides a complete OpenShift cluster that is configured for high availability (HA) and dedicated to a single customer (single-tenant). Red Hat Operations manages OpenShift Dedicated, providing improved security and years of operational experience with OpenShift in development and production. OpenShift Dedicated also includes Red Hat Premium Support, which is available 24 hours a day, seven days a week.2. What are Init containers used for?Init containers, which run before application containers and can contain utilities or setup scripts not available in an app image, are provided by the OpenShift Container Platform. Before the rest of a pod is deployed, you can utilise an Init Container resource to conduct activities.In addition to application containers, a pod can have Init Containers. Setup scripts and binding code can be reorganised using init containers. An Init Container can do the following:• Contain and run utilities that, for security reasons, should not be included in the app Container image.• Contains setup tools or custom code that isn't included in the app image. For example, using sed, awk, python, or dig during setup does not necessitate creating an image FROM another picture.• Use Linux namespaces to provide them different filesystem views than app containers, including access to secrets that app containers don't have.Before the next Init Container is started, the previous one must finish successfully. As a result, Init Containers make it simple to prevent or delay the launch of app containers until certain conditions are met.3. Why should you use OpenShift?OpenShift provides a standard platform for business units to host their apps on the cloud without having to worry about the operating system. This makes it very simple to use, build, and deploy cloud-based apps. It provides managed hardware and network resources for all types of development and testing, which is one of the essential characteristics. PaaS developers using OpenShift can construct their environment based on their needs.4. What is the OpenShift Container Platform by Red Hat?To design and deploy better apps quicker, a hybrid cloud, enterprise Kubernetes platform is needed. The Red Hat OpenShift Container Platform provides a unified hybrid cloud basis for developing and scaling containerized applications.Red Hat's on-premises private platform as a service solution, OpenShift Container Platform, is based on Red Hat Enterprise Linux and built around a core of application containers powered by Docker, with orchestration and management provided by Kubernetes. Red Hat's experience in identifying and promptly providing solutions for vulnerabilities in both the platform and the containerized apps running on it will benefit the OpenShift Container Platform. Red Hat also has experience efficiently integrating new components with the OpenShift Container Platform as they become available, as well as modifying technology to meet the needs of individual customers.5. What is the OpenShift Command Line Interface (CLI)?The OpenShift CLI tool is a command-line tool for managing OpenShift applications. We can manage the application's life cycle from start to finish using the OpenShift CLI. It provides basic and complex application setup features. It also has tools for managing, distributing, and adding new apps.You can create applications and manage OpenShift Container Platform projects from a terminal using the OpenShift command-line interface (CLI). After you've installed the CLI, you can use the oc command to access it. In the following scenarios, the OpenShift CLI is ideal:• Working directly with the source code of the project• OpenShift Container Platform operations can be scripted.• Project management while bandwidth is limited and the web console is unavailable.A few of the major CLI commands are listed below:• Create a new project with the oc new-project command. • Create a new application with the oc new-app command.• To see the pods for the current project, use the oc get pods command.• To access logs for a specific pod, use the oc logs command.• To see the current project, use the oc project command.• To get information about the current project, including as services, deployments, and build configs, use the oc status command.• The oc api-resources command displays a list of the server's supported API resources.• To see the description and fields for a specific resource, use the oc explain command.• To see a list and description of all available CLI commands, type oc help.
+Introduction
+This subscription guide provides an overview of Red Hat® Application Services subscriptions, their
+benefits and entitlements, and Red Hat policies covering the use of these subscriptions.
+Red Hat uses the term “Application Services” to refer to capabilities that provide customers with
+tools to design and develop cloud-native architectures and applications for hybrid cloud execution.
+This definition reflects the evolution of middleware to the cloud, with specific capabilities to
+run better in orchestrated (Kube and container) environments.
+In addition to supporting traditional self-managed Application Services deployments, Red Hat offers
+capabilities as managed cloud services to provide customer choice in operational responsibilities and
+accelerate time to value. This guide covers subscription considerations for self-managed Application
+Services products. Other Red Hat products, including platforms and managed cloud services, are
+introduced here for context, but subscription considerations for those products on their own are not
+detailed in this guide.
+Red Hat has worked over time to increase the value and flexibility of these subscriptions as we
+continue to evolve our portfolio of application services products for hybrid cloud operation.
+This subscription guide will help you better understand:
+Red Hat Application Services products and the range of benefits included with each
+product subscription.
+Red Hat policies that permit broad deployment of subscriptions across on-premise, private
+cloud, public cloud, and hosted cloud environments. Specific use cases are detailed herein.
+How to determine the optimal licensing strategy across any customer lifecycle stage and any
+chosen deployment location.
+Specific use cases for integrating Red Hat Application Services with Red Hat Enterprise Linux®
+or Red Hat OpenShift® platforms or together with partner and 3rd-party hardware, software,
+and services.
+General subscription benefits for all products
+The many benefits to purchasing a Red Hat subscription include:
+Predictability. Subscriptions are offered on an annual or multiyear basis and include access to
+new versions at no additional cost, so there are no large upfront license fees or hidden costs.
+Flexibility. Red Hat’s application services subscriptions provide value through the entire
+application lifecycle—from development through production—and allow a variety of deployment
+options from on-premise to public cloud.
+Integrated and certified enterprise platforms. You have access to enterprise open source
+application services platforms, in source code and binary forms, along with enterprise product
+documentation specific to each product release.
+Regular upgrades and updates. These include enhancements, new features, new platform
+certifications, and access to the latest defect and security fixes.
+Security response. Subscriptions include Red Hat’s industry-recognized security response
+process to help you proactively address potential security issues in their environments.
+2
+redhat.com Detail Red Hat Application Services subscription guide
+Long-term stability. Each Red Hat Application Services product has a defined multiyear product
+lifecycle with strict update policies that maintain long-term application stability and compatibility.
+World-class technical support. Open source Application Services experts provide unlimited
+incident support with 24x7 coverage up with 1-hour response time for your critical issues.
+Red Hat Customer Portal access. This is a single portal for accessing all of the benefits of a
+Red Hat subscription, including enterprise software delivery, product updates, critical issue
+notifications, knowledge base access, and case management.
+Partner certifications. Know that your enterprise application services are fully certified by
+leading Red Hat independent software vendor (ISV) partners.
+Legal assurance. The Red Hat Open Source Assurance program safeguards your development
+and deployment of open source solutions from legal harm.
+Red Hat Application Services products
+This guide covers the following Red Hat Application Services products and bundle subscriptions.
+See Table 1 below for descriptions.
+ Products and bundles available for new subscriptions:
+Red Hat Application Foundations
+Red Hat Runtimes
+Red Hat Service Interconnect
+Products and bundles available for renewals:
+Red Hat Integration
+Red Hat JBoss® Enterprise Application Platform (JBoss EAP)
+Red Hat JBoss Web Server
+Red Hat Data Grid
+Red Hat AMQ (AMQ streams, AMQ broker)
+Red Hat Fuse
+Red Hat 3scale API Management
+Transitioned to IBM
+Further information: IBM Expands Business Automation Portfolio with Open Source Process and
+Decision Automation
+Red Hat Process Automation
+Red Hat Process Automation Manager
+Red Hat Decision Manager
+Notes:
+The descriptions in this document also cover all program-specific or route-specific versions
+of the bundles and products listed above. Examples of these are:
+3
+redhat.com Detail Red Hat Application Services subscription guide
+“For Red Hat OpenShift” or “for Red Hat OpenShift Dedicated” product descriptions.
+“Extended life cycle support add-ons,” if applicable.
+“Certified Cloud Service Provider, embedded, L3-only support partners, OEM.”
+Any legacy products that are still supported—such as Red Hat JBoss Fuse Service Works—
+will also follow these general rules until their respective end-of-life dates.
+What products are included with each subscription?
+Red Hat Application Services “bundled subscriptions” help you deploy a choice of one or more
+products on the same physical location or to separate hardware units, provided that each unit
+running part or all of the product is counted toward the subscription total.
+Table 1 shows the complete list of products and selected components included with each
+subscription. See component details pages for a comprehensive list of components. Table 1
+outlines which software is eligible for support or deployment in a manner consistent with the
+“production purposes” definition in Appendix 1 of Red Hat license agreements.
+Table 1. Subscription products and components
+Products available for
+new subscriptions
+Included components
+Red Hat Application
+Foundations
+All products and components included as part of Red Hat Runtimes
+streams for Apache Kafka
+Red Hat build of Debezium
+Red Hat 3scale API Management
+Red Hat build of Apicurio Registry
+Red Hat build of Apache Camel
+Red Hat Runtimes Red Hat JBoss Enterprise Application Platform
+Red Hat Data Grid
+Red Hat JBoss Web Server
+Red Hat build of Quarkus
+AMQ broker
+Red Hat build of OpenJDK
+Red Hat JBoss Enterprise Application Platform expansion pack
+Red Hat build of Keycloak
+Single sign-on
+Red Hat JBoss Core Services Collection
+Migration toolkit for Applications
+Migration toolkit for Runtimes
+4
+redhat.com Detail Red Hat Application Services subscription guide
+Products available for
+new subscriptions
+Included components
+Red Hat Service
+Interconnect
+Red Hat Service Interconnect
+1 Red Hat Fuse 7 reached end of life in June 2024 and Red Hat Fuse Extended Life Cycle Support Add-Ons are available
+until June 2026. Customers should migrate to Red Hat Build of Apache Camel.
+Products available for
+renewals
+Included components
+Red Hat Integration Red Hat Fuse1
+Red Hat build of Apache Camel
+streams for Apache Kafka
+Red Hat 3scale API Management
+Red Hat build of Debezium
+Red Hat build of Apicurio Registry,
+All products and components included as part of Red Hat Runtimes
+Red Hat JBoss Enterprise
+Application Platform
+(JBoss EAP)
+Red Hat JBoss Enterprise Application Platform
+Red Hat JBoss Web Server
+Red Hat JBoss Enterprise Application Platform expansion pack
+Red Hat build of OpenJDK
+Red Hat JBoss Core Services Collection
+Migration toolkit for applications
+Migration toolkit for runtimes
+Red Hat JBoss Web Server Red Hat JBoss Web Server
+Red Hat build of OpenJDK
+Migration toolkit for applications
+Migration toolkit for runtimes
+Red Hat Data Grid Red Hat Data Grid
+Red Hat JBoss EAP (restricted for running Red Hat Data Grid only)
+Red Hat build of OpenJDK
+Red Hat AMQ Red Hat AMQ (clients, broker, streams for Apache Kafka)
+Red Hat build of OpenJDK
+5
+redhat.com Detail Red Hat Application Services subscription guide
+Red Hat Fuse1 Red Hat Fuse1
+Red Hat build of Apache Camel
+AMQ broker
+Red Hat JBoss EAP
+Red Hat build of OpenJDK
+Red Hat JBoss Core Services Collection
+Red Hat 3scale API
+Management
+Red Hat 3scale API Management (Admin Portal, Developer Portal,
+API gateway)
+Red Hat JBoss Core
+Services Collection
+Apache HTTP server
+Internet information services (IIS) connector, iPlanet connector,
+Single sign-on
+Apache Commons Jsvc
+Discontinued products Included components
+(note that components may still be available
+in new or renewal products above)
+Red Hat Application
+Services portfolio
+(formerly Red Hat
+Middleware portfolio)
+Red Hat JBoss EAP
+Red Hat JBoss Web Server
+Cloud-native Red Hat Runtimes
+Red Hat Data Grid
+AMQ broker (only)
+Red Hat build of OpenJDK
+Red Hat JBoss Core Services Collection
+Single sign-on
+Red Hat Fuse1
+Red Hat 3scale API Management
+Red Hat build of Debezium
+Red Hat OpenShift Service Registry
+Red Hat Process Automation Manager
+Red Hat Decision Manager
+6
+redhat.com Detail Red Hat Application Services subscription guide
+Discontinued products Included components
+(note that components may still be available
+in new or renewal products above)
+Red Hat Process Automation Red Hat Process Automation Manager
+Red Hat Decision Manager
+Red Hat JBoss EAP
+Red Hat build of OptaPlanner (formerly Business Optimizer)
+Red Hat build of OpenJDK,
+Red Hat JBoss Core Services Collection
+Red Hat Decision Manager
+(formerly Red Hat JBoss
+BRMS)
+Red Hat JBoss EAP
+Red Hat Decision Manager
+Red Hat build of OptaPlanner (formerly Business Optimizer)
+Red Hat build of OpenJDK
+Red Hat JBoss Core Services Collection
+Red Hat Process Automation
+Manager (formerly Red Hat
+JBoss BPM Suite)
+Red Hat JBoss EAP
+Red Hat Decision Manager
+Red Hat Process Automation Manager
+Red Hat build of OptaPlanner (formerly Business Optimizer)
+Red Hat build of OpenJDK
+Red Hat JBoss Core Services Collection
+Subscription rules
+Layered products
+Layered products include multiple underlying products, which are intended to be used together.
+Examples include:
+Red Hat Fuse includes Red Hat AMQ and Red Hat JBoss Enterprise Application Platform.
+Red Hat OpenShift includes single sign-on, Red Hat build of Keycloak and Red Hat build
+of Quarkus.
+These products and components—which are included in a single SKU—are typically used together
+with or in support of the named product.
+In some cases, they can be used standalone on separate hardware. However, this requires excess
+unused capacity and often results in a more expensive use of a layered product.
+7
+redhat.com Detail Red Hat Application Services subscription guide
+For example, the expectation for a customer buying 64 cores of Red Hat Fuse is that the included
+JBoss EAP will be used as the runtime for Red Hat Fuse. If a customer is only using 48 cores, for
+example, they might want to repurpose the 16 unused cores for JBoss EAP-only workloads. This is an
+edge case, but it is fine if the customer chooses to do this. However, they should acknowledge that
+these are effectively very expensive JBoss EAP cores.
+The most important point is that a layered product cannot be deconstructed into numerous
+individual subscriptions. For example, a 64-core subscription of Red Hat Fuse is not equivalent to
+independent 64-core subscriptions for each included product or component. It provides 64 total
+cores, upon which one or all products and subcomponents can be deployed.
+In select cases—for example, single sign-on in Red Hat OpenShift—the product or component has
+a restricted use case and cannot be deployed separately from Red Hat OpenShift, regardless of
+whether excess capacity of the named product exists.
+For the full list of product inclusions, see Table 1.
+Product bundles
+A product bundle is a subscription entitlement that offers a single pool of cores intended to be
+shared across multiple products, components, and use cases. Your usage could be of several
+products together—for example, Red Hat OpenShift and Red Hat Application Foundations bundle
+has a combined installation, identity management, and user experience. You might also be using
+individual products (e.g., Red Hat OpenShift, Red Hat build of Camel, Red Hat 3scale API
+Management, etc.) independently for product-specific use cases. It does not matter which product
+or combination of products is deployed at any time, as long as the combined core count does not
+exceed the total number of paid subscription cores. These cores may be used on different CPUs or
+on any mix of on-premise, private cloud, or public cloud environments.
+Cluster editions
+Application Services products with cluster editions are designed to provide consistency and flexible
+deployment across the entire Red Hat OpenShift environment. Red Hat recognizes that not all
+components will be used on each Red Hat OpenShift core across the entire environment and offers
+favorable pricing for cluster editions to provide customers with a cost-effective and flexible
+option to deploy any included component at any time during the term of the subscription on Red Hat
+OpenShift. The total core count for cluster editions must equal the total core count for Red Hat
+OpenShift during the entire subscription term. See Appendix 1 for details.
+Bare-metal editions
+Products with bare-metal editions may only be deployed machines using Red Hat OpenShift
+bare-metal products.
+Core bands
+Red Hat Application Services products are sold in units of “core bands” of 2-core and 4-core units. In
+addition, some products may be available for partner-embedded use in single core multiples.
+8
+redhat.com Detail Red Hat Application Services subscription guide
+Application development lifecycle
+Appendix 1 of Red Hat’s license agreement defines 2 use case modes when determining whether to
+charge application services subscription fees for units running in a specific use case: developer
+purposes and production purposes. Any units running for development purposes are not counted and
+do not require subscription fees for each unit. Any units running for production purposes are counted
+and do require subscription fees for each unit.
+Table 2. Description and appendix 1 licensing requirements
+Lifecycle stage Cores
+counted?
+Single-user for development purposes
+Access by a single developer on a single-user laptop or desktop, running
+single-user instances on the laptop or a connected server.
+Appendix 1: “Development purposes” means using the software for
+development-related tasks that are performed by a single user acting in
+a standalone mode, such as:
+(a) An individual developer writing software code.
+(b) A single user performing prototyping or quality assurance testing,
+where neither involved any form of automated testing, multiuser testing,
+or multiclient testing.
+(c) A Red Hat partner user demonstrating software or hardware that runs
+with or on the software.
+No
+Other development use cases, or quality assurance, load test, staging,
+production, or hot or active disaster recovery (DR)
+A developer-focused project environment shared with more than a single person;
+continuous integration or functional testing environments; business users testing
+early prerelease versions of the software; also called user acceptance testing, or
+staging, or preproduction environments.
+Appendix 1: “Production purposes” means using the software:
+(a) In a production environment.
+(b) For general use of live data or applications for a purpose other
+than development.
+(c) For any automated quality assurance or testing, multiuser quality assurance
+or testing, or multiclient quality assurance testing.
+(d) For hot or active disaster recovery backup instances.
+Yes
+9
+redhat.com Detail Red Hat Application Services subscription guide
+Lifecycle stage Cores
+counted?
+Warm or cold disaster recovery
+You may transfer, migrate, or otherwise move software subscriptions, provided
+you are accountable for the number and types of units associated with the
+software subscriptions.
+No
+Types of disaster recovery and how they are counted
+Hot disaster recovery
+Cores in hot disaster recovery are counted. Hot DR systems are running concurrently
+and are ready to receive traffic quickly in the event of a disaster within the primary
+environment. When deploying Red Hat Application Services deployments in DR
+environments, virtual or physical cores across hot DR or failover environments should
+be included as part of the total core count.
+Warm disaster recovery
+Cores in warm disaster recovery are not counted. Warm DR environments are already
+configured with hardware representing a reasonable facsimile of the production environment.
+To restore service, restoration of the most recent backups must be completed before service
+can be resumed.
+Cold disaster recovery
+Cores in cold disaster recovery are not counted. With cold DR, if a disaster were to
+occur and primary systems are no longer available, primary subscription entitlements that
+are no longer in use can be transferred to cold DR environments (making cold DR a temporary
+production environment). The expectation is these systems will never run concurrently
+with the primary cores and rarely receive updates, if at all.
+Product lifecycle
+A critical aspect to any Red Hat Application Services subscription is the support policy and product
+lifecycle. This policy is included in Appendix 1 and is considered a legally binding document. It contains
+information on our software releases and support and should be studied in detail.
+Products and certain subcomponents each have a lifecycle.
+To receive the full benefits of your subscription, Red Hat requires that customers:
+1. Run a supported major version of the product.
+2. Run the latest minor release in a major release stream (e.g., JBoss EAP 7.2).
+3. Purchase Extended Life Cycle Support (ELS) subscriptions in addition to the base product
+if the customer is running a product version in either ELS-1 or ELS-2.
+10
+redhat.com Detail Red Hat Application Services subscription guide
+Note that customers frequently sign long-term deals with Red Hat. These deals do not supersede the
+published dates of our product lifecycle. For example, a customer may sign a 5-year contract. This
+does not give them the ability to “choose a version” and run it for 5 years with no changes. It is likely
+that a customer with a long-term subscription will need to either migrate to a newer major version or
+pay for the appropriate ELS add-on during the course of their contract with Red Hat.
+Extended Life Cycle Support
+Application Services ELS is an additional product lifecycle support phase that immediately follows
+the end of a product major version’s maintenance support window. During this phase, Red Hat lowers
+its overall support obligations for the product version and will only deliver certain bug fixes. Most
+active Red Hat Application Services products have at least 1 major version eligible for ELS. The full list
+is available on the public product lifecycle page. Detailed discussion is available on the support policy
+and product lifecycle page.
+Product-specific supported configurations
+Each Red Hat Application Services product has a specific list of supported and tested configurations.
+“Tested” means that the specific versions of the product, Java™ Virtual Machine (JVM), platform
+or operating system (OS), and hardware listed have been tested by Red Hat and are performing
+properly. “Supported” means that Red Hat will provide support for the products (e.g., Red Hat
+Runtimes) running on untested JVMs, but may require the customer to reproduce an issue (at the
+customer’s expense, if applicable) on a tested platform or involve a 3rd party to resolve the issue
+if an untested platform or hardware configuration is suspected to be causing the issue.
+Red Hat targets the most in-demand hardware and software configurations, but cannot test every
+possible combination. Red Hat offers clear support guidance for using our products with untested
+3rd-party environments.
+Using Red Hat Application Services products with 3rd-party environments
+You may choose to deploy your Red Hat Application Services subscriptions in environments
+integrated with 3rd-party software or hardware or a public cloud provider. When this happens,
+Red Hat’s Support team will initially follow the support guidelines listed on each product’s supported
+configurations page. Additionally, Red Hat will offer a level of support for untested environments.
+Details of these support policies are available in this Red Hat Customer Portal article on middleware
+products deployed in 3rd-party environments.
+Additional guidance can be found here:
+Red Hat Container Support Policy
+Support for Red Hat JBoss Middleware Containers
+How are JBoss products supported when used in container images?
+Red Hat Customer Portal
+Confirmed Stateside Support (for U.S.-based customers)
+Red Hat Support is a global effort that requires input from experts around the world. However,
+some customers require their support to be only from U.S. citizens on U.S. soil. Confirmed Stateside
+Support (CSS) was created to provide that. For example, customers running Red Hat-supported
+11
+redhat.com Detail Red Hat Application Services subscription guide
+products in Amazon Web Services (AWS) GovCloud require this due to possible exposure of
+International Traffic in Arms Regulations (ITAR) data and the ensuing legal ramifications.
+CSS has costs associated with meeting these special requirements. It necessitates an off-site
+facility with a dedicated phone line, select U.S. citizen staff with in-depth ITAR training, a specialized
+workflow, a separate ticketing portal, and many legal considerations to protect sensitive data. The
+price of CSS reflects the expenses covered by Red Hat to provide these benefits.
+We understand that, in many cases, customers take special care to remove ITAR-sensitive data in
+support cases. However, the drastic legal ramifications for Red Hat handling ITAR data without CSS
+outweighs our willingness to take any chances. Red Hat’s Confirmed Stateside Support offering is
+designed with our information-security-conscious customers in mind and is required for customers
+with Red Hat products on AWS GovCloud. Contact your Red Hat sales channel for pricing or
+implementation details.
+Application Services entitlements and how to count units and use
+SKU descriptions may include GPU along with CPU and vCPU for the purpose of sizing/counting
+parity with other product SKUs, however actual product/component operating requirements need
+to be considered when determining where a component can be deployed.
+Application Services—everywhere
+Red Hat Application Services subscription licensing is very flexible. Subscriptions are licensed and
+supported across multiple OS and hardware platforms (see supported and tested configurations
+page) and across any mix of on-premise, private cloud, and public cloud deployment environments.
+Subscription entitlements also provide value throughout the full application development and
+deployment lifecycle.
+Core edition subscription licensing flexibility eliminates the need to purchase products for a
+particular deployment environment (e.g., public cloud), OS or container platform (e.g., Red Hat
+Enterprise Linux or Red Hat OpenShift), or lifecycle phase (e.g., development). No additional
+purchases are needed when you move from any one of these environments to another during the
+term of a subscription. However, keep in mind that cluster and bare-metal edition subscriptions are
+limited to deployment on Red Hat OpenShift. See the “Subscription Rules” section of this document
+for details.
+Subscription flexibility is further highlighted by packaging of multiple components for complete
+cloud-native architectures into Red Hat Application Foundations and Red Hat Runtimes. These
+products deliver the ability to flexibly deploy included components and the ability to change the
+usage combination of licensed components at any time during the term of a subscription.
+These subscriptions entitle a shared pool of units that can be used across the eligible and
+included components.
+Deployment options include public cloud providers, such as Amazon Web Services, IBM Cloud,
+Microsoft Azure, Google Cloud, and Alibaba Cloud. This provides a flexible and holistic application
+environment across physical, virtual, and cloud deployments.
+Cores for required external supporting capabilities, such as databases, should not be included in
+counts. Additionally, cores used for the following component-specific operations may be excluded
+from counts:
+Zookeeper for streams for Apache Kafka
+12
+redhat.com Detail Red Hat Application Services subscription guide
+KRaft controller only nodes for streams for Apache Kafka (cores used for mixed nodes
+will be charged)
+API gateway instances for API Management
+Red Hat Application Services subscriptions are to be counted using the same vCPU-to-core ratio
+that is used by the cloud provider to handle routine hyperthreading. This is commonly 2 vCPUs per
+core, but may vary with specialized processor hardware configurations. Each vendor describes this
+conversion. For an example, consult the AWS guide.
+Non-OpenShift use guidelines
+The following principles apply to noncontainerized subscription deployments, such as application
+services on Red Hat Enterprise Linux on a physical server in a datacenter.
+Physical cores, virtual cores
+Physical cores are our standard unit of measurement.
+Physical cores may be deployed across multiple CPU sockets, CPUs, or servers.
+Virtual cores, or “virtual CPUS (vCPUs),” are physical cores used for individual virtual
+environments or virtual machines (VMs).
+Virtual cores and vCPUs can be counted, but need to align with physical cores.
+If physical cores can be counted when deploying in a virtualized environment, then these
+units will be counted.
+If you do not know which or how many physical cores in a CPU socket-pair use our software,
+then we charge for all of the cores in the CPU socket-pair.
+You need to count all cores or vCPUs in a CPU socket-pair unless they are using known
+core-limiting software that limits the use of our software within that socket-pair.
+For auto-scaling configurations, the subscription cores should be set to the limits of cores
+that may be used to ensure that the entitlement provides sufficient coverage.
+Virtual machines
+You can create a variable-sized VM within a CPU socket-pair. VMs are built atop underlying
+physical cores. We count the physical cores that contain the VM.
+If use of our software is limited to a VM that only uses a subset of physical cores in the
+socket-pair, then we only count those physical cores associated with the VM.
+You need to count all cores or vCPUs within a VM unless you are using known core-limiting
+software that limits the use of our software within that VM.
+Hyperthreading, vCPUs
+Hyperthreading creates more, but smaller, vCPUs across a fixed number of physical cores.
+The vCPU has become a common logical unit of measurement in cloud-based platforms.
+With noncompute intensive apps, customers can take advantage of the larger number of
+hyperthreaded vCPUs without expanding the physical core use.
+13
+redhat.com Detail Red Hat Application Services subscription guide
+Hyperthreading does not change counting rules. Red Hat will continue to charge for the
+underlying physical cores, and when hyperthreading is actively used for Red Hat products,
+vCPUs can be counted using the common (2) vCPU-to-(1) core ratio.
+If you only know the vCPU count and not the physical core count, we will allow 2:1 if
+hyperthreading is being used. We will count 1:1 if hyperthreading is not in use.
+On Red Hat OpenShift (containerized deployment) use guidelines
+Unit counting on container platforms, such as Red Hat OpenShift, has some differences in
+comparison with noncontainer deployments.
+Cluster editions
+Application Services products with cluster editions are designed to provide consistency and
+flexible deployment across the entire Red Hat OpenShift environment. Red Hat recognizes that
+not all components will be used on each Red Hat OpenShift core across the entire environment
+and offers favorable pricing for cluster editions to provide customers with a cost-effective and
+flexible option to deploy any included component at any time during the term of the subscription
+on Red Hat OpenShift. The total core count for cluster editions must equal the total core count for
+Red Hat OpenShift during the entire subscription term. See Appendix 1 for details.
+Bare-metal editions
+Products with bare-metal editions may only be deployed machines using Red Hat OpenShift
+bare-metal products.
+What is the same as noncontainer deployment?
+The vCPU/core remains the countable unit for entitlements and license tracking. Container
+platforms measure pods and nodes within a cluster. But, these are user-defined groupings
+of vCPUs/cores.
+For auto-scaling configurations, the subscription cores should be set to the limits of cores
+that may be used to ensure that the entitlement provides sufficient coverage.
+What is different from noncontainer deployment?
+Red Hat OpenShift (or the container platform) automates the starting and stopping of
+application services workload instances. This simplifies Red Hat’s entitlements counting
+policy to charging only for cores or vCPUs that are concurrently running at any given time
+during the subscription period.
+Cores used for Red Hat component and product operators do not count against the
+subscription limits.
+It does not matter where the application services workload gets deployed within the overall
+cluster. As long as the concurrent use of cores remains at or below the level of the active
+subscription, no cores need to be added to a subscription.
+Core/vCPU sizes of container instances are individually tracked, logged, and summed
+together—even partial vCPU or subcore instances—for any given period of time. For billing
+purposes, this summary is rounded up to the nearest whole selling unit, with a minimum
+of 2 cores.
+14
+redhat.com Detail Red Hat Application Services subscription guide
+Only the sum of all instances used at any given time needs to be rounded up to a multiple
+of SKU units. Any individual container instances can be measured in partial core sizes.
+You may choose to set predefined limits on Red Hat Application Services workload sizing by limiting a
+workload to specific nodes in a cluster. This approach may offer certain advantages to a customer, but
+is not required by Red Hat for metering or counting purposes.
+Note: If you purchase the same number of Red Hat Application Foundations cores as the number
+existing in your Red Hat OpenShift cluster, for example, there is no need to count the number of
+Red Hat Application Foundations cores running during any given period. The Red Hat OpenShift
+cluster can have unlimited Red Hat Application Foundations use within this cluster. This is a primary
+advantage of cluster editions, which equip you with the flexibility to deploy components across the
+Red Hat OpenShift cluster as needed at any time.
+Metering of Application Services use on Red Hat OpenShift
+Red Hat Application Services subscriptions are license-only enforcement. Red Hat does not
+deliver any tooling that restricts the deployment of application services products based on any
+subscription limits.
+On public clouds: Use guidelines
+We highlighted earlier in this subscription guide that Red Hat Application Services subscription
+licensing is very flexible. Subscriptions are licensed and supported across multiple OS and hardware
+platforms and across any combination of on-premise, private cloud, and public cloud deployment
+environments. This means that unit counting of cores and vCPUs on public clouds uses the
+same approach as on-premise (noncontainer deployments) or on Red Hat OpenShift (container
+deployments).
+Cloud services
+Red Hat OpenShift Service on AWS
+Red Hat OpenShift Service on AWS is a managed Red Hat OpenShift service deployed and
+operated on AWS that allows customers to quickly and easily build, deploy, and manage Kubernetes
+applications on a turnkey application platform in AWS Cloud. As a native AWS service, OpenShift
+Service on AWS can be accessed on demand from the AWS console with hourly billing, a single invoice
+for AWS deployments, integration with other AWS cloud-native services, and joint support from
+Red Hat and AWS.
+Microsoft Azure Red Hat OpenShift
+Microsoft Azure Red Hat OpenShift provides highly available, fully managed Red Hat OpenShift
+clusters on demand, which are monitored and operated jointly by Microsoft and Red Hat. Kubernetes
+is at the core of Red Hat OpenShift, and Red Hat OpenShift adds valuable features to complement
+Kubernetes, making it a turnkey container Platform-as-a-Service (PaaS) with a significantly improved
+developer and operator experience.
+Red Hat OpenShift Dedicated
+Red Hat OpenShift Dedicated is a Red Hat OpenShift cluster provided as a managed cloud service,
+configured for high availability (HA), and dedicated to a single customer (single-tenant). OpenShift
+Dedicated is managed by Red Hat Site Reliability Engineering, providing increased security and years
+15
+redhat.com Detail Red Hat Application Services subscription guide
+of operational experience working with Red Hat OpenShift in both development and production.
+OpenShift Dedicated also comes with award-winning 24x7 Red Hat Premium Support and a 99.95%
+Service Level Agreement (SLA).
+Red Hat OpenShift on IBM Cloud
+Red Hat OpenShift on IBM Cloud is a managed offering to create your own Red Hat OpenShift cluster
+of compute hosts to deploy and manage containerized applications on IBM Cloud. Red Hat OpenShift
+on IBM Cloud provides intelligent scheduling, self-healing, horizontal scaling, service discovery and
+load balancing, automated rollouts and rollbacks, and secret and configuration management for your
+applications. Combined with an intuitive user experience, built-in security and isolation, and advanced
+tools to secure, manage, and monitor your cluster workloads, you can rapidly deliver highly available
+and security-hardened containerized applications in the public cloud.
+Red Hat Application Services on OpenShift cloud services
+You can mix your Application Services core entitlements—whether you purchased them as on-premise
+or OpenShift cloud services. This applies to OpenShift Dedicated, Azure Red Hat OpenShift, Red Hat
+OpenShift on IBM Cloud, and OpenShift Service on AWS. However, you are responsible for honoring
+subscription entitlement limits associated with your Red Hat Application Services purchases.
+Red Hat manages a repository of Application Services images that can be deployed on OpenShift
+cloud services. If you want to use a version of an application services product that is not in this
+repository—say, an older version of JBoss EAP—then you are responsible for any handling, installation,
+or deployment of the application services software onto Red Hat OpenShift.
+Red Hat products, services, and programs
+Red Hat platform products
+Red Hat Enterprise Linux. Red Hat Enterprise Linux has been foundational for the innovative
+development of the entire Red Hat portfolio as an open source operating system (OS). It is the
+foundation from which you can scale existing apps—and roll out emerging technologies—across
+bare-metal, virtual, container, and all types of cloud environments.
+Red Hat OpenShift. Built by open source leaders, Red Hat OpenShift is a leading enterprise
+Kubernetes platform. Red Hat OpenShift provides a security-focused, consistent foundation to
+deliver applications anywhere, with full-stack automated operations and streamlined developer
+workflows. With Red Hat OpenShift, innovators can focus on what matters, stay competitive, and
+outpace continually rising customer expectations.
+Red Hat OpenShift includes everything you need for your hybrid cloud, enterprise container,
+and Kubernetes development and deployments. It includes an enterprise-grade Linux operating
+system, container runtime, networking, monitoring, container registry, authentication, and autho-
+rization solutions. These components are tested together for unified operations on a complete
+Kubernetes platform spanning every cloud.
+Red Hat Services
+Close the gap between what you know and what you need from architecture through adoption and
+training. Our teams and resources help you get the most out of your technology investment. No
+matter where you are in your journey with Red Hat products, we have offerings designed to help
+you do more.
